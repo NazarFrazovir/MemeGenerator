@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Генератор Мемів</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Генератор Мемів</h1>
+    <p>Завантажте фото, додайте текст і створіть власний мем!</p>
+  </header>
+
+  <main>
+    <section class="upload-section">
+      <label for="upload-image" class="upload-btn">Завантажити фото</label>
+      <input type="file" id="upload-image" accept="image/*" hidden>
+    </section>
+
+    <div class="meme-editor">
+      <canvas id="meme-canvas"></canvas>
+      <div class="text-controls">
+        <input type="text" id="top-text" placeholder="Верхній текст">
+        <input type="text" id="bottom-text" placeholder="Нижній текст">
+        <div class="settings">
+          <label>Колір тексту:</label>
+          <input type="color" id="text-color" value="#ffffff">
+          <label>Розмір:</label>
+          <input type="number" id="text-size" value="40" min="10" max="100">
+        </div>
+      </div>
+      <button id="download-btn">Зберегти мем</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2024 Генератор Мемів</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
