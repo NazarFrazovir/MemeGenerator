@@ -1,11 +1,17 @@
 /* Загальні стилі */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #f8f9fa;
   color: #333;
-  text-align: center;
   margin: 0;
-  padding: 20px;
+  padding: 0;
+  text-align: center;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #6c757d;
 }
 
 header {
@@ -13,13 +19,15 @@ header {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 32px;
   color: #007bff;
+  margin-bottom: 10px;
 }
 
 h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 /* Селектор формату */
@@ -89,3 +97,90 @@ button:hover {
   margin: 20px 0;
 }
 
+
+/* Секція редагування фото */
+.image-editing {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.editing-controls, .filters {
+  margin: 15px 0;
+}
+
+
+/* Навігаційне меню */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu li {
+  margin: 0;
+}
+
+.nav-link {
+  color: #007bff;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+  color: #0056b3;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Секції меню */
+.menu-section {
+  display: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.menu-section.active {
+  display: block;
+}
+
+
+
+/* Кнопки */
+button, .upload-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .upload-btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}

@@ -3,36 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мем-генератор для соцмереж</title>
+  <title>Мем-генератор</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Мем-генератор для соцмереж</h1>
-    <p>Виберіть формат, створіть мем і збережіть у потрібному розмірі!</p>
+    <h1>Мем-генератор</h1>
+    <p>Створіть унікальний мем для ваших соцмереж!</p>
   </header>
 
+  <!-- Навігаційне меню -->
+  <nav>
+    <ul class="nav-menu">
+      <li><a href="#" data-section="format-selection" class="nav-link active">Вибір формату</a></li>
+      <li><a href="#" data-section="image-editing" class="nav-link">Редагування фото</a></li>
+      <li><a href="#" data-section="text-controls" class="nav-link">Генератор тексту</a></li>
+    </ul>
+  </nav>
+
   <main>
+    <!-- Полотно (canvas) для мему -->
+    <section class="canvas-section">
+      <canvas id="meme-canvas"></canvas>
+    </section>
+
     <!-- Вибір формату -->
-    <section class="format-selection">
+    <section id="format-selection" class="menu-section active">
       <h2>Виберіть формат</h2>
       <select id="format-select">
         <option value="500x500" selected>Стандартний (500x500)</option>
         <option value="1080x1080">Instagram (1080x1080)</option>
         <option value="1080x1920">TikTok (1080x1920)</option>
+        <option value="1920x1080">Twitter (1920x1080)</option>
       </select>
-    </section>
-
-    <!-- Кнопка для завантаження зображення -->
-    <section class="upload-section">
       <label for="upload-image" class="upload-btn">Завантажити фото</label>
       <input type="file" id="upload-image" accept="image/*" hidden>
     </section>
 
-    <!-- Редактор мему -->
-    <section class="meme-editor">
-      <canvas id="meme-canvas"></canvas>
-      <div class="text-controls">
+    <!-- Редагування фото -->
+    <section id="image-editing" class="menu-section">
+      <h2>Редагування фото</h2>
+      <div class="editing-controls">
+        <button id="rotate-left">Обертати вліво</button>
+        <button id="rotate-right">Обертати вправо</button>
+        <button id="reset-image">Скинути зміни</button>
+      </div>
+
+      <div class="filters">
+        <h3>Фільтри</h3>
+        <button data-filter="none">Без фільтра</button>
+        <button data-filter="grayscale(1)">Чорно-білий</button>
+        <button data-filter="sepia(1)">Сепія</button>
+        <button data-filter="contrast(2)">Контраст</button>
+        <button data-filter="brightness(1.5)">Яскравість</button>
+      </div>
+    </section>
+
+    <!-- Генератор тексту -->
+    <section id="text-controls" class="menu-section">
+      <h2>Додайте текст</h2>
+      <div>
         <input type="text" id="top-text" placeholder="Верхній текст">
         <input type="text" id="bottom-text" placeholder="Нижній текст">
         <div class="settings">
