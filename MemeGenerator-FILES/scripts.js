@@ -6,7 +6,7 @@ canvas.height = 500;
 
 // Перемінні для роботи із зображенням
 let image = new Image(); // Для збереження зображення
-let rotation = 0; // Поточне обертання
+let rotation = 0; // Поточне обертання зображення
 let currentFilter = 'none'; // Поточний фільтр
 
 // Навігація між секціями
@@ -26,7 +26,7 @@ navLinks.forEach(link => {
     document.getElementById(targetSection).classList.add('active');
     link.classList.add('active');
 
-    // Перемалювати зображення у новій секції
+    // Перемалювати мем у новій секції
     drawMeme();
   });
 });
@@ -40,7 +40,7 @@ uploadImage.addEventListener('change', (e) => {
     reader.onload = () => {
       image.src = reader.result; // Встановлюємо джерело зображення
     };
-    reader.readAsDataURL(file); // Читаємо файл як Data URL
+    reader.readAsDataURL(file); // Читання файлу як Data URL
   }
 });
 
@@ -75,49 +75,87 @@ function drawMeme() {
   drawText();
 }
 
-// Додавання тексту
+// --- Налаштування тексту ---
+
 const topTextInput = document.getElementById('top-text');
 const bottomTextInput = document.getElementById('bottom-text');
 const textColorInput = document.getElementById('text-color');
 const textSizeInput = document.getElementById('text-size');
+const fontFamilySelect = document.getElementById('font-family');
+const textOutlineCheckbox = document.getElementById('text-outline');
+const textShadowCheckbox = document.getElementById('text-shadow');
+const textOpacityRange = document.getElementById('text-opacity');
+const textRotationInput = document.getElementById('text-rotation');
 
-[topTextInput, bottomTextInput, textColorInput, textSizeInput].forEach(input =>
-  input.addEventListener('input', drawMeme)
-);
+// Оновлення тексту в реальному часі
+[topTextInput, bottomTextInput, textColorInput, textSizeInput, fontFamilySelect, 
+ textOutlineCheckbox, textShadowCheckbox, textOpacityRange, textRotationInput].forEach(input => {
+  input.addEventListener('input', drawMeme);
+});
 
 function drawText() {
   const textSize = parseInt(textSizeInput.value, 10);
-  ctx.font = `${textSize}px Arial`;
+  const fontFamily = fontFamilySelect.value;
+  const textOpacity = parseFloat(textOpacityRange.value);
+  const textRotation = parseInt(textRotationInput.value, 10);
+
+  ctx.font = `${textSize}px ${fontFamily}`;
   ctx.textAlign = 'center';
   ctx.fillStyle = textColorInput.value;
-  ctx.lineWidth = textSize / 10;
-  ctx.strokeStyle = 'black';
+  ctx.globalAlpha = textOpacity; // Прозорість тексту
 
-  // Верхній текст
+  // Налаштування тіні
+  if (textShadowCheckbox.checked) {
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetX = 3;
+    ctx.shadowOffsetY = 3;
+  } else {
+    ctx.shadowColor = 'transparent'; // Відключення тіні
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
+  }
+
+  // Малювання верхнього тексту
   if (topTextInput.value.trim() !== '') {
-    ctx.strokeText(topTextInput.value.toUpperCase(), canvas.width / 2, textSize + 10);
-    ctx.fillText(topTextInput.value.toUpperCase(), canvas.width / 2, textSize + 10);
+    drawRotatedText(topTextInput.value.toUpperCase(), canvas.width / 2, textSize + 10, textRotation);
   }
 
-  // Нижній текст
+  // Малювання нижнього тексту
   if (bottomTextInput.value.trim() !== '') {
-    ctx.strokeText(bottomTextInput.value.toUpperCase(), canvas.width / 2, canvas.height - 20);
-    ctx.fillText(bottomTextInput.value.toUpperCase(), canvas.width / 2, canvas.height - 20);
+    drawRotatedText(bottomTextInput.value.toUpperCase(), canvas.width / 2, canvas.height - 20, textRotation);
   }
+
+  ctx.globalAlpha = 1; // Відновлення прозорості
 }
 
-// Вибір формату полотна
-const formatSelect = document.getElementById('format-select');
-formatSelect.addEventListener('change', () => {
-  const [width, height] = formatSelect.value.split('x').map(Number);
-  canvas.width = width;
-  canvas.height = height;
-  drawMeme(); // Перемалювати мем після зміни розміру
-});
+// Функція для малювання тексту з обертанням
+function drawRotatedText(text, x, y, angle) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate((angle * Math.PI) / 180);
 
-// Обертання зображення
+  // Обведення тексту
+  if (textOutlineCheckbox.checked) {
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'black';
+    ctx.strokeText(text, 0, 0);
+  }
+
+  // Малювання тексту
+  ctx.fillText(text, 0, 0);
+  ctx.restore();
+}
+
+// --- Редагування фото ---
+
 const rotateLeftBtn = document.getElementById('rotate-left');
 const rotateRightBtn = document.getElementById('rotate-right');
+const resetImageBtn = document.getElementById('reset-image');
+const filterButtons = document.querySelectorAll('.filters button');
+
+// Обертання зображення
 rotateLeftBtn.addEventListener('click', () => {
   rotation -= 90;
   drawMeme();
@@ -128,7 +166,6 @@ rotateRightBtn.addEventListener('click', () => {
 });
 
 // Скидання змін
-const resetImageBtn = document.getElementById('reset-image');
 resetImageBtn.addEventListener('click', () => {
   rotation = 0;
   currentFilter = 'none';
@@ -136,7 +173,6 @@ resetImageBtn.addEventListener('click', () => {
 });
 
 // Застосування фільтрів
-const filterButtons = document.querySelectorAll('.filters button');
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
     currentFilter = button.getAttribute('data-filter');
@@ -144,7 +180,8 @@ filterButtons.forEach(button => {
   });
 });
 
-// Завантаження мему
+// --- Завантаження готового мему ---
+
 const downloadBtn = document.getElementById('download-btn');
 downloadBtn.addEventListener('click', () => {
   const link = document.createElement('a');
