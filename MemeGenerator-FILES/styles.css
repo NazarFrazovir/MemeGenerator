@@ -192,71 +192,156 @@ select {
 
 /* --- Медіа-запити для адаптивності --- */
 
-/* Для екранів менше 768px (планшети, мобільні телефони) */
+/* Для екранів менше 768px */
 @media (max-width: 768px) {
+  /* Заголовки */
   h1 {
-    font-size: 28px; /* Зменшення заголовка */
+    font-size: 28px; /* Зменшений заголовок */
+    margin-bottom: 15px;
   }
 
   h2 {
     font-size: 20px;
+    margin-bottom: 20px;
   }
 
+  /* Навігаційне меню */
   .nav-menu {
     flex-direction: column; /* Вертикальне меню */
     align-items: center;
+    padding: 0;
   }
 
   .nav-link {
-    padding: 10px 15px;
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 14px; /* Зменшений текст */
+    padding: 10px 15px; /* Відступи для зручного натискання */
+    margin: 5px 0; /* Відступ між пунктами */
   }
 
+  /* Полотно (canvas) */
+  canvas {
+    max-width: 95%; /* Ширина полотна адаптується */
+    height: auto; /* Пропорційна висота */
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+
+  /* Кнопки */
   button, .upload-btn {
-    font-size: 14px; /* Зменшення розміру кнопок */
-    padding: 8px 15px;
+    font-size: 14px; /* Зменшений розмір кнопок */
+    padding: 8px 12px; /* Компактні кнопки */
+    margin: 5px 5px;
   }
 
+  /* Випадаючі списки */
   select {
     font-size: 14px;
-    padding: 8px;
+    padding: 8px 10px;
   }
 
-  canvas {
-    max-width: 100%; /* Полотно займає ширину екрана */
+  /* Фільтри */
+  .filters button {
+    font-size: 14px;
+    padding: 8px 12px; /* Компактні кнопки для фільтрів */
+    margin: 5px;
+  }
+
+  /* Ефекти тексту */
+  .effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
+    margin-left: 3px;
+    font-size: 14px;
+  }
+
+  .effects h3 {
+    font-size: 18px;
+  }
+
+  /* Відступи між секціями */
+  .menu-section {
+    margin-top: 20px; /* Додатковий відступ */
+  }
+
+  .settings label, .effects label {
+    font-size: 14px;
+    margin-right: 8px;
   }
 }
 
-/* Для екранів менше 480px (мобільні телефони) */
+
+/* Для екранів менше 480px */
 @media (max-width: 480px) {
+  /* Заголовок */
   h1 {
-    font-size: 24px; /* Ще менше для заголовків */
+    font-size: 22px;
+    margin-bottom: 10px;
   }
 
   h2 {
     font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  /* Навігаційне меню */
+  .nav-menu {
+    flex-direction: column; /* Вертикальне меню */
+    align-items: center;
+    padding: 0;
   }
 
   .nav-link {
-    font-size: 12px; /* Компактніший текст у меню */
-    padding: 8px 10px;
+    font-size: 12px; /* Менший текст */
+    padding: 8px 10px; /* Зменшити відступи */
+    margin: 5px 0;
   }
 
+  /* Полотно (canvas) */
+  canvas {
+    max-width: 90%; /* Зменшуємо ширину полотна */
+    height: auto; /* Зберігаємо пропорції */
+    border: 1px solid #ccc;
+  }
+
+  /* Кнопки */
   button, .upload-btn {
-    font-size: 12px;
-    padding: 5px 10px; /* Компактні кнопки */
+    font-size: 12px; /* Зменшення розміру тексту кнопок */
+    padding: 6px 10px; /* Компактні кнопки */
+    margin: 5px 5px; /* Зменшуємо проміжки між кнопками */
   }
 
+  /* Випадаючі списки */
   select {
     font-size: 12px;
-    padding: 5px;
+    padding: 6px 8px;
   }
 
-  canvas {
-    border: 1px solid #ccc; /* Тонший бордюр для полотна */
+  /* Фільтри */
+  .filters button {
+    font-size: 12px;
+    padding: 5px 8px; /* Компактні кнопки для фільтрів */
+    margin: 5px;
+  }
+
+  /* Ефекти тексту */
+  .effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
+    margin-left: 2px;
+    font-size: 12px;
+  }
+
+  .effects h3 {
+    font-size: 16px;
+  }
+
+  /* Відступи між секціями */
+  .menu-section {
+    margin-top: 15px; /* Менший відступ між секціями */
+  }
+
+  .settings label, .effects label {
+    font-size: 12px;
+    margin-right: 5px;
   }
 }
+
 
 
 .settings, .effects {
