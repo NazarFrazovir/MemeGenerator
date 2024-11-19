@@ -50,6 +50,9 @@ canvas {
   margin: 0 auto 20px;
   border: 2px solid #ccc;
   background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
 }
 
 /* Панель управління текстом */
@@ -87,6 +90,7 @@ button:hover {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 12px;
 }
 
 .upload-btn:hover {
@@ -183,4 +187,73 @@ select {
   border-radius: 5px;
   background-color: #fff;
   cursor: pointer;
+}
+
+
+/* --- Медіа-запити для адаптивності --- */
+
+/* Для екранів менше 768px (планшети, мобільні телефони) */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px; /* Зменшення заголовка */
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .nav-menu {
+    flex-direction: column; /* Вертикальне меню */
+    align-items: center;
+  }
+
+  .nav-link {
+    padding: 10px 15px;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  button, .upload-btn {
+    font-size: 14px; /* Зменшення розміру кнопок */
+    padding: 8px 15px;
+  }
+
+  select {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  canvas {
+    max-width: 100%; /* Полотно займає ширину екрана */
+  }
+}
+
+/* Для екранів менше 480px (мобільні телефони) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 24px; /* Ще менше для заголовків */
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .nav-link {
+    font-size: 12px; /* Компактніший текст у меню */
+    padding: 8px 10px;
+  }
+
+  button, .upload-btn {
+    font-size: 12px;
+    padding: 5px 10px; /* Компактні кнопки */
+  }
+
+  select {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  canvas {
+    border: 1px solid #ccc; /* Тонший бордюр для полотна */
+  }
 }
