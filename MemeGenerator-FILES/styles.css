@@ -1,81 +1,91 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  header {
-    margin-bottom: 20px;
-  }
-  
-  .upload-btn {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-  }
-  
-  .meme-editor {
-    margin-top: 20px;
-  }
-  
-  canvas {
-    display: block;
-    margin: 0 auto 20px;
-    border: 2px solid #ccc;
-    background-color: #fff;
-  }
-  
-  .text-controls {
-    margin-bottom: 20px;
-  }
-  
-  input[type="text"], input[type="color"], input[type="number"] {
-    margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    background-color: #28a745;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #218838;
-  }
-  
-  footer {
-    margin-top: 20px;
-    font-size: 14px;
-  }
+/* Загальні стилі */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
 
-  /* Анімація для кнопки "Зберегти мем" */
+header {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #007bff;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+/* Селектор формату */
+.format-selection select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+/* Полотно (canvas) */
+.meme-editor {
+  margin-top: 20px;
+}
+
+canvas {
+  display: block;
+  margin: 0 auto 20px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+}
+
+/* Панель управління текстом */
+.text-controls {
+  margin-bottom: 20px;
+}
+
+.text-controls input {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 button {
-  transition: background-color 0.3s, transform 0.2s;
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
   background-color: #218838;
-  transform: scale(1.05);
 }
 
-canvas {
-  background-color: #f0f0f0; /* Світло-сірий фон */
-  border: 2px solid #ccc;
+
+/* Кнопка для завантаження фото */
+.upload-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.upload-section {
+  margin: 20px 0;
+}
+

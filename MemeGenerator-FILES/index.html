@@ -3,22 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Генератор Мемів</title>
+  <title>Мем-генератор для соцмереж</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Генератор Мемів</h1>
-    <p>Завантажте фото, додайте текст і створіть власний мем!</p>
+    <h1>Мем-генератор для соцмереж</h1>
+    <p>Виберіть формат, створіть мем і збережіть у потрібному розмірі!</p>
   </header>
 
   <main>
+    <!-- Вибір формату -->
+    <section class="format-selection">
+      <h2>Виберіть формат</h2>
+      <select id="format-select">
+        <option value="500x500" selected>Стандартний (500x500)</option>
+        <option value="1080x1080">Instagram (1080x1080)</option>
+        <option value="1080x1920">TikTok (1080x1920)</option>
+      </select>
+    </section>
+
+    <!-- Кнопка для завантаження зображення -->
     <section class="upload-section">
       <label for="upload-image" class="upload-btn">Завантажити фото</label>
       <input type="file" id="upload-image" accept="image/*" hidden>
     </section>
 
-    <div class="meme-editor">
+    <!-- Редактор мему -->
+    <section class="meme-editor">
       <canvas id="meme-canvas"></canvas>
       <div class="text-controls">
         <input type="text" id="top-text" placeholder="Верхній текст">
@@ -26,17 +38,16 @@
         <div class="settings">
           <label>Колір тексту:</label>
           <input type="color" id="text-color" value="#ffffff">
-          <label>Розмір:</label>
+          <label>Розмір тексту:</label>
           <input type="number" id="text-size" value="40" min="10" max="100">
         </div>
       </div>
       <button id="download-btn">Зберегти мем</button>
-      <button id="reset-btn">Очистити</button>
-    </div>   
+    </section>
   </main>
 
   <footer>
-    <p>© 2024 Генератор Мемів</p>
+    <p>© 2024 Мем-генератор</p>
   </footer>
 
   <script src="scripts.js"></script>
