@@ -15,37 +15,54 @@ let image = new Image();
 // Завантаження зображення
 uploadImage.addEventListener('change', (e) => {
   const file = e.target.files[0];
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    image.src = reader.result;
-    image.onload = () => {
-      drawMeme();
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      image.src = reader.result;
     };
-  };
-
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+  }
 });
 
 // Малювання мему
-function drawMeme() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+image.onload = () => {
+  drawMeme();
+};
 
+function drawMeme() {
+  // Очищення полотна
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Масштабування зображення
+  const imgWidth = image.width;
+  const imgHeight = image.height;
+  const scale = Math.min(canvas.width / imgWidth, canvas.height / imgHeight);
+  const x = (canvas.width - imgWidth * scale) / 2;
+  const y = (canvas.height - imgHeight * scale) / 2;
+
+  ctx.drawImage(image, x, y, imgWidth * scale, imgHeight * scale);
+
+  // Текстові налаштування
   const textSize = parseInt(textSizeInput.value, 10);
   ctx.font = `${textSize}px Arial`;
-  ctx.fillStyle = textColorInput.value;
   ctx.textAlign = 'center';
+  ctx.fillStyle = textColorInput.value;
+  ctx.lineWidth = textSize / 10; // Обводка тексту
+  ctx.strokeStyle = 'black';
 
   // Верхній текст
-  ctx.fillText(topTextInput.value.toUpperCase(), canvas.width / 2, textSize);
+  if (topTextInput.value.trim() !== '') {
+    const topText = topTextInput.value.toUpperCase();
+    ctx.strokeText(topText, canvas.width / 2, textSize + 10);
+    ctx.fillText(topText, canvas.width / 2, textSize + 10);
+  }
 
   // Нижній текст
-  ctx.fillText(
-    bottomTextInput.value.toUpperCase(),
-    canvas.width / 2,
-    canvas.height - 20
-  );
+  if (bottomTextInput.value.trim() !== '') {
+    const bottomText = bottomTextInput.value.toUpperCase();
+    ctx.strokeText(bottomText, canvas.width / 2, canvas.height - 20);
+    ctx.fillText(bottomText, canvas.width / 2, canvas.height - 20);
+  }
 }
 
 // Оновлення тексту в реальному часі
@@ -60,3 +77,15 @@ downloadBtn.addEventListener('click', () => {
   link.href = canvas.toDataURL();
   link.click();
 });
+
+const resetBtn = document.getElementById('reset-btn');
+
+resetBtn.addEventListener('click', () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  topTextInput.value = '';
+  bottomTextInput.value = '';
+  textColorInput.value = '#ffffff';
+  textSizeInput.value = 40;
+});
+
+

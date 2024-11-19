@@ -64,4 +64,18 @@
     margin-top: 20px;
     font-size: 14px;
   }
-  
+
+  /* Анімація для кнопки "Зберегти мем" */
+button {
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+canvas {
+  background-color: #f0f0f0; /* Світло-сірий фон */
+  border: 2px solid #ccc;
+}
