@@ -257,3 +257,20 @@ select {
     border: 1px solid #ccc; /* Тонший бордюр для полотна */
   }
 }
+
+
+.settings, .effects {
+  margin: 15px 0;
+}
+
+.settings label, .effects label {
+  margin-right: 10px;
+}
+
+.effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
+  margin-left: 5px;
+}
+
+.effects h3 {
+  margin-bottom: 10px;
+}
