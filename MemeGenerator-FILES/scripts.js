@@ -246,3 +246,28 @@ function applyFilterManually(imageData, filter) {
 function truncate(value) {
   return Math.min(255, Math.max(0, value));
 }
+
+const themeToggleBtn = document.getElementById('theme-toggle');
+
+// Перевірка збереженої теми в localStorage
+if (localStorage.getItem('theme') === 'dark') {
+  document.body.classList.add('dark-mode');
+  themeToggleBtn.textContent = '🌜'; // Іконка для темної теми
+} else {
+  themeToggleBtn.textContent = '🌞'; // Іконка для світлої теми
+}
+
+// Подія для перемикання теми
+themeToggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+
+  // Збереження вибору теми у localStorage
+  if (document.body.classList.contains('dark-mode')) {
+    localStorage.setItem('theme', 'dark');
+    themeToggleBtn.textContent = '🌜'; // Іконка для темної теми
+  } else {
+    localStorage.setItem('theme', 'light');
+    themeToggleBtn.textContent = '🌞'; // Іконка для світлої теми
+  }
+});
+

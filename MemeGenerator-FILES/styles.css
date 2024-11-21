@@ -1,153 +1,109 @@
+/* Змінні для тем */
+:root {
+  --background-color: #f8f9fa; /* Світлий фон */
+  --text-color: #333;          /* Темний текст */
+  --accent-color: #4a90e2;     /* Акцентний колір */
+  --header-background: #007bff;
+  --header-text-color: #fff;
+}
+
+body.dark-mode {
+  --background-color: #1a1a1a; /* Темний фон */
+  --text-color: #f0f0f0;       /* Світлий текст */
+  --header-background: #333;   /* Темніший хедер */
+  --header-text-color: #f0f0f0;
+}
+
 /* Загальні стилі */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
   margin: 0;
   padding: 0;
   text-align: center;
 }
 
-footer {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #6c757d;
-}
-
+/* Заголовок */
 header {
+  background: var(--header-background);
+  color: var(--header-text-color);
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
   margin-bottom: 20px;
 }
 
 h1 {
   font-size: 32px;
-  color: #007bff;
-  margin-bottom: 10px;
+  font-weight: bold;
+  margin: 0;
 }
 
-h2 {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 20px;
+p {
+  font-size: 18px;
+  margin: 5px 0;
 }
-
-/* Селектор формату */
-.format-selection select {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  cursor: pointer;
-}
-
-/* Полотно (canvas) */
-.meme-editor {
-  margin-top: 20px;
-}
-
-canvas {
-  display: block;
-  margin: 0 auto 20px;
-  border: 2px solid #ccc;
-  background-color: #fff;
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-}
-
-/* Панель управління текстом */
-.text-controls {
-  margin-bottom: 20px;
-}
-
-.text-controls input {
-  margin: 5px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-button {
-  padding: 10px 15px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #218838;
-}
-
-
-/* Кнопка для завантаження фото */
-.upload-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 12px;
-}
-
-.upload-btn:hover {
-  background-color: #0056b3;
-}
-
-.upload-section {
-  margin: 20px 0;
-}
-
-
-/* Секція редагування фото */
-.image-editing {
-  margin-top: 20px;
-  text-align: center;
-}
-
-.editing-controls, .filters {
-  margin: 15px 0;
-}
-
 
 /* Навігаційне меню */
 .nav-menu {
   display: flex;
   justify-content: center;
   list-style: none;
-  padding: 0;
+  padding: 10px;
   margin: 20px 0;
-  background-color: #f4f4f4;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.nav-menu li {
-  margin: 0;
+body.dark-mode .nav-menu {
+  background: #2a2a2a;
 }
 
 .nav-link {
-  color: #007bff;
   text-decoration: none;
-  padding: 15px 20px;
-  display: inline-block;
+  padding: 10px 20px;
+  color: var(--text-color);
   font-weight: bold;
-  border-radius: 10px;
-  transition: all 0.3s ease;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-.nav-link:hover {
-  background-color: #e9ecef;
-  color: #0056b3;
-}
-
-.nav-link.active {
-  background-color: #007bff;
+.nav-link:hover, .nav-link.active {
+  background: var(--accent-color);
   color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Полотно (canvas) */
+canvas {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Кнопки */
+button, .upload-btn {
+  background: var(--accent-color);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover, .upload-btn:hover {
+  background: var(--header-background);
+  transform: scale(1.05);
+}
+
+.upload-btn {
+  display: inline-block;
+  font-size: 14px;
 }
 
 /* Секції меню */
@@ -161,26 +117,44 @@ button:hover {
   display: block;
 }
 
-
-
-/* Кнопки */
-button, .upload-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
+/* Панель управління текстом */
+.text-controls input, select {
+  margin: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 14px;
+}
+
+.text-controls {
+  margin-bottom: 20px;
+}
+
+/* Розділ редагування фото */
+.image-editing, .editing-controls, .filters {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.filters button {
+  margin: 5px;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  color: #333;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
 }
 
-button:hover, .upload-btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+.filters button:hover {
+  background: var(--accent-color);
+  color: #fff;
 }
 
-select {
+/* Селектор формату */
+.format-selection select {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -189,173 +163,170 @@ select {
   cursor: pointer;
 }
 
-
-/* --- Медіа-запити для адаптивності --- */
-
-/* Для екранів менше 768px */
-@media (max-width: 768px) {
-  /* Заголовки */
-  h1 {
-    font-size: 28px; /* Зменшений заголовок */
-    margin-bottom: 15px;
-  }
-
-  h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  /* Навігаційне меню */
-  .nav-menu {
-    flex-direction: column; /* Вертикальне меню */
-    align-items: center;
-    padding: 0;
-  }
-
-  .nav-link {
-    font-size: 14px; /* Зменшений текст */
-    padding: 10px 15px; /* Відступи для зручного натискання */
-    margin: 5px 0; /* Відступ між пунктами */
-  }
-
-  /* Полотно (canvas) */
-  canvas {
-    max-width: 95%; /* Ширина полотна адаптується */
-    height: auto; /* Пропорційна висота */
-    border: 1px solid #ccc;
-    margin-top: 10px;
-  }
-
-  /* Кнопки */
-  button, .upload-btn {
-    font-size: 14px; /* Зменшений розмір кнопок */
-    padding: 8px 12px; /* Компактні кнопки */
-    margin: 5px 5px;
-  }
-
-  /* Випадаючі списки */
-  select {
-    font-size: 14px;
-    padding: 8px 10px;
-  }
-
-  /* Фільтри */
-  .filters button {
-    font-size: 14px;
-    padding: 8px 12px; /* Компактні кнопки для фільтрів */
-    margin: 5px;
-  }
-
-  /* Ефекти тексту */
-  .effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
-    margin-left: 3px;
-    font-size: 14px;
-  }
-
-  .effects h3 {
-    font-size: 18px;
-  }
-
-  /* Відступи між секціями */
-  .menu-section {
-    margin-top: 20px; /* Додатковий відступ */
-  }
-
-  .settings label, .effects label {
-    font-size: 14px;
-    margin-right: 8px;
-  }
+/* Футер */
+footer {
+  padding: 20px;
+  font-size: 14px;
+  color: var(--text-color);
+  background: var(--background-color);
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+/* --- Медіа-запити --- */
 
-/* Для екранів менше 480px */
-@media (max-width: 480px) {
-  /* Заголовок */
+/* Для екранів шириною менше 1024px */
+@media (max-width: 1024px) {
+  header {
+    padding: 15px;
+  }
+
   h1 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 28px;
   }
 
-  h2 {
-    font-size: 18px;
-    margin-bottom: 15px;
-  }
-
-  /* Навігаційне меню */
-  .nav-menu {
-    flex-direction: column; /* Вертикальне меню */
-    align-items: center;
-    padding: 0;
-  }
-
-  .nav-link {
-    font-size: 12px; /* Менший текст */
-    padding: 8px 10px; /* Зменшити відступи */
-    margin: 5px 0;
-  }
-
-  /* Полотно (canvas) */
-  canvas {
-    max-width: 90%; /* Зменшуємо ширину полотна */
-    height: auto; /* Зберігаємо пропорції */
-    border: 1px solid #ccc;
-  }
-
-  /* Кнопки */
-  button, .upload-btn {
-    font-size: 12px; /* Зменшення розміру тексту кнопок */
-    padding: 6px 10px; /* Компактні кнопки */
-    margin: 5px 5px; /* Зменшуємо проміжки між кнопками */
-  }
-
-  /* Випадаючі списки */
-  select {
-    font-size: 12px;
-    padding: 6px 8px;
-  }
-
-  /* Фільтри */
-  .filters button {
-    font-size: 12px;
-    padding: 5px 8px; /* Компактні кнопки для фільтрів */
-    margin: 5px;
-  }
-
-  /* Ефекти тексту */
-  .effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
-    margin-left: 2px;
-    font-size: 12px;
-  }
-
-  .effects h3 {
+  p {
     font-size: 16px;
   }
 
-  /* Відступи між секціями */
-  .menu-section {
-    margin-top: 15px; /* Менший відступ між секціями */
+  .nav-menu {
+    padding: 10px;
   }
 
-  .settings label, .effects label {
+  canvas {
+    max-width: 90%;
+  }
+
+  button, .upload-btn {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+
+  .filters button {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+/* Для екранів шириною менше 768px (планшети) */
+@media (max-width: 768px) {
+  header {
+    text-align: center;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .nav-menu {
+    flex-direction: column; /* Вертикальне меню */
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: 14px;
+    padding: 10px 15px;
+    margin: 5px 0;
+  }
+
+  canvas {
+    max-width: 95%;
+    border: 1px solid #ccc;
+  }
+
+  button, .upload-btn {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  select, input[type="text"] {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .filters button {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
+
+/* Для екранів шириною менше 480px (мобільні пристрої) */
+@media (max-width: 480px) {
+  header {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
     font-size: 12px;
-    margin-right: 5px;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    padding: 8px 10px;
+    margin: 5px 0;
+  }
+
+  canvas {
+    max-width: 100%;
+  }
+
+  button, .upload-btn {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  select, input[type="text"], .filters button {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+
+  footer {
+    font-size: 12px;
   }
 }
 
+/* Для дуже маленьких екранів (менше 360px) */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 18px;
+  }
 
+  p {
+    font-size: 10px;
+  }
 
-.settings, .effects {
-  margin: 15px 0;
+  button, .upload-btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  canvas {
+    max-width: 100%;
+    border: 1px solid #ccc;
+  }
+
+  .filters button {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+
+  footer {
+    font-size: 10px;
+  }
 }
 
-.settings label, .effects label {
-  margin-right: 10px;
-}
-
-.effects input[type="checkbox"], .effects input[type="range"], .effects input[type="number"] {
-  margin-left: 5px;
-}
-
-.effects h3 {
-  margin-bottom: 10px;
-}
